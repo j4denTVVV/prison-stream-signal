@@ -84,6 +84,9 @@ function FilePage() {
               value={entry.revealed ? (entry.status ?? "CONFIRMED") : "CLASSIFIED"}
               tone={entry.revealed ? "ok" : "muted"}
             />
+            {entry.revealed && entry.role ? (
+              <DataRow label="Role" value={entry.role} tone="warn" />
+            ) : null}
             <DataRow
               label="Announced"
               value={entry.revealed ? (entry.announcedOn ?? "[REDACTED]") : "COMING SOON"}
