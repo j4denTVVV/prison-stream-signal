@@ -10,33 +10,115 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BulletinRouteImport } from './routes/bulletin'
+import { Route as LiveRouteImport } from './routes/live'
+import { Route as RevealsRouteImport } from './routes/reveals'
+import { Route as TrailerRouteImport } from './routes/trailer'
+import { Route as RosterIndexRouteImport } from './routes/roster.index'
+import { Route as RosterFileIdRouteImport } from './routes/roster.$fileId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BulletinRoute = BulletinRouteImport.update({
+  id: '/bulletin',
+  path: '/bulletin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LiveRoute = LiveRouteImport.update({
+  id: '/live',
+  path: '/live',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RevealsRoute = RevealsRouteImport.update({
+  id: '/reveals',
+  path: '/reveals',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TrailerRoute = TrailerRouteImport.update({
+  id: '/trailer',
+  path: '/trailer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RosterIndexRoute = RosterIndexRouteImport.update({
+  id: '/roster/',
+  path: '/roster/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RosterFileIdRoute = RosterFileIdRouteImport.update({
+  id: '/roster/$fileId',
+  path: '/roster/$fileId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/bulletin': typeof BulletinRoute
+  '/live': typeof LiveRoute
+  '/reveals': typeof RevealsRoute
+  '/trailer': typeof TrailerRoute
+  '/roster/$fileId': typeof RosterFileIdRoute
+  '/roster/': typeof RosterIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/bulletin': typeof BulletinRoute
+  '/live': typeof LiveRoute
+  '/reveals': typeof RevealsRoute
+  '/trailer': typeof TrailerRoute
+  '/roster/$fileId': typeof RosterFileIdRoute
+  '/roster': typeof RosterIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/bulletin': typeof BulletinRoute
+  '/live': typeof LiveRoute
+  '/reveals': typeof RevealsRoute
+  '/trailer': typeof TrailerRoute
+  '/roster/$fileId': typeof RosterFileIdRoute
+  '/roster/': typeof RosterIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/bulletin'
+    | '/live'
+    | '/reveals'
+    | '/trailer'
+    | '/roster/$fileId'
+    | '/roster/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/bulletin'
+    | '/live'
+    | '/reveals'
+    | '/trailer'
+    | '/roster/$fileId'
+    | '/roster'
+  id:
+    | '__root__'
+    | '/'
+    | '/bulletin'
+    | '/live'
+    | '/reveals'
+    | '/trailer'
+    | '/roster/$fileId'
+    | '/roster/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BulletinRoute: typeof BulletinRoute
+  LiveRoute: typeof LiveRoute
+  RevealsRoute: typeof RevealsRoute
+  TrailerRoute: typeof TrailerRoute
+  RosterFileIdRoute: typeof RosterFileIdRoute
+  RosterIndexRoute: typeof RosterIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +130,59 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/bulletin': {
+      id: '/bulletin'
+      path: '/bulletin'
+      fullPath: '/bulletin'
+      preLoaderRoute: typeof BulletinRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/live': {
+      id: '/live'
+      path: '/live'
+      fullPath: '/live'
+      preLoaderRoute: typeof LiveRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reveals': {
+      id: '/reveals'
+      path: '/reveals'
+      fullPath: '/reveals'
+      preLoaderRoute: typeof RevealsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/trailer': {
+      id: '/trailer'
+      path: '/trailer'
+      fullPath: '/trailer'
+      preLoaderRoute: typeof TrailerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/roster/': {
+      id: '/roster/'
+      path: '/roster'
+      fullPath: '/roster/'
+      preLoaderRoute: typeof RosterIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/roster/$fileId': {
+      id: '/roster/$fileId'
+      path: '/roster/$fileId'
+      fullPath: '/roster/$fileId'
+      preLoaderRoute: typeof RosterFileIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BulletinRoute: BulletinRoute,
+  LiveRoute: LiveRoute,
+  RevealsRoute: RevealsRoute,
+  TrailerRoute: TrailerRoute,
+  RosterFileIdRoute: RosterFileIdRoute,
+  RosterIndexRoute: RosterIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
