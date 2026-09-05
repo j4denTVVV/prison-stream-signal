@@ -10,10 +10,13 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as BulletinRouteImport } from './routes/bulletin'
+import { Route as ConnectRouteImport } from './routes/connect'
 import { Route as LiveRouteImport } from './routes/live'
 import { Route as RevealsRouteImport } from './routes/reveals'
 import { Route as TrailerRouteImport } from './routes/trailer'
+import { Route as VoteRouteImport } from './routes/vote'
 import { Route as RosterIndexRouteImport } from './routes/roster.index'
 import { Route as RosterFileIdRouteImport } from './routes/roster.$fileId'
 
@@ -22,9 +25,19 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BulletinRoute = BulletinRouteImport.update({
   id: '/bulletin',
   path: '/bulletin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConnectRoute = ConnectRouteImport.update({
+  id: '/connect',
+  path: '/connect',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LiveRoute = LiveRouteImport.update({
@@ -42,6 +55,11 @@ const TrailerRoute = TrailerRouteImport.update({
   path: '/trailer',
   getParentRoute: () => rootRouteImport,
 } as any)
+const VoteRoute = VoteRouteImport.update({
+  id: '/vote',
+  path: '/vote',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RosterIndexRoute = RosterIndexRouteImport.update({
   id: '/roster/',
   path: '/roster/',
@@ -55,29 +73,38 @@ const RosterFileIdRoute = RosterFileIdRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/bulletin': typeof BulletinRoute
+  '/connect': typeof ConnectRoute
   '/live': typeof LiveRoute
   '/reveals': typeof RevealsRoute
   '/trailer': typeof TrailerRoute
+  '/vote': typeof VoteRoute
   '/roster/$fileId': typeof RosterFileIdRoute
   '/roster/': typeof RosterIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/bulletin': typeof BulletinRoute
+  '/connect': typeof ConnectRoute
   '/live': typeof LiveRoute
   '/reveals': typeof RevealsRoute
   '/trailer': typeof TrailerRoute
+  '/vote': typeof VoteRoute
   '/roster/$fileId': typeof RosterFileIdRoute
   '/roster': typeof RosterIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/bulletin': typeof BulletinRoute
+  '/connect': typeof ConnectRoute
   '/live': typeof LiveRoute
   '/reveals': typeof RevealsRoute
   '/trailer': typeof TrailerRoute
+  '/vote': typeof VoteRoute
   '/roster/$fileId': typeof RosterFileIdRoute
   '/roster/': typeof RosterIndexRoute
 }
@@ -85,38 +112,50 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/about'
     | '/bulletin'
+    | '/connect'
     | '/live'
     | '/reveals'
     | '/trailer'
+    | '/vote'
     | '/roster/$fileId'
     | '/roster/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/about'
     | '/bulletin'
+    | '/connect'
     | '/live'
     | '/reveals'
     | '/trailer'
+    | '/vote'
     | '/roster/$fileId'
     | '/roster'
   id:
     | '__root__'
     | '/'
+    | '/about'
     | '/bulletin'
+    | '/connect'
     | '/live'
     | '/reveals'
     | '/trailer'
+    | '/vote'
     | '/roster/$fileId'
     | '/roster/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
   BulletinRoute: typeof BulletinRoute
+  ConnectRoute: typeof ConnectRoute
   LiveRoute: typeof LiveRoute
   RevealsRoute: typeof RevealsRoute
   TrailerRoute: typeof TrailerRoute
+  VoteRoute: typeof VoteRoute
   RosterFileIdRoute: typeof RosterFileIdRoute
   RosterIndexRoute: typeof RosterIndexRoute
 }
@@ -130,11 +169,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/bulletin': {
       id: '/bulletin'
       path: '/bulletin'
       fullPath: '/bulletin'
       preLoaderRoute: typeof BulletinRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/connect': {
+      id: '/connect'
+      path: '/connect'
+      fullPath: '/connect'
+      preLoaderRoute: typeof ConnectRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/live': {
@@ -158,6 +211,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TrailerRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/vote': {
+      id: '/vote'
+      path: '/vote'
+      fullPath: '/vote'
+      preLoaderRoute: typeof VoteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/roster/': {
       id: '/roster/'
       path: '/roster'
@@ -177,10 +237,13 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
   BulletinRoute: BulletinRoute,
+  ConnectRoute: ConnectRoute,
   LiveRoute: LiveRoute,
   RevealsRoute: RevealsRoute,
   TrailerRoute: TrailerRoute,
+  VoteRoute: VoteRoute,
   RosterFileIdRoute: RosterFileIdRoute,
   RosterIndexRoute: RosterIndexRoute,
 }

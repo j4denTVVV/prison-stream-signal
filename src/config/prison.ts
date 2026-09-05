@@ -84,23 +84,26 @@ export type RosterEntry = {
   streamUrl?: string;
   announcedOn?: string;
   status?: string;
+  /** position within the organisation, if revealed */
+  role?: string;
 };
 
 export const placeholderFiles = 6;
 
 export const roster: RosterEntry[] = [
-  // Example of a revealed entry — kept commented so nothing is invented:
-  // {
-  //   file: "001",
-  //   revealed: true,
-  //   name: "REDACTED",
-  //   username: "@REDACTED",
-  //   platform: "REDACTED",
-  //   bio: "REDACTED",
-  //   socials: [{ platform: "REDACTED", url: "REDACTED" }],
-  //   announcedOn: "REDACTED",
-  //   status: "CONFIRMED",
-  // },
+  {
+    file: "001",
+    revealed: true,
+    name: "XKEONTE",
+    platform: "INSTAGRAM",
+    role: "HEAD OF THE ORGANISATION — STILL AN INMATE",
+    bio: "British content creator and online personality from Birmingham, England. Known for entertaining, creator-led content and his involvement in the UK online creator scene. He runs this organisation — from the inside.",
+    socials: [
+      { platform: "Instagram", url: "https://www.instagram.com/reel/DcOsXiWN6Ex/" },
+    ],
+    announcedOn: "2026",
+    status: "CONFIRMED — INSIDE",
+  },
 ];
 
 /** ---------------------------------------------------------------------
@@ -121,10 +124,10 @@ export const liveStreams: Stream[] = [];
  * TRAILER — no trailer released yet.
  * ------------------------------------------------------------------- */
 export const trailer = {
-  released: false,
+  released: true,
   label: "TRANSMISSION 001",
-  /** set to an embed/mp4 URL once released */
-  url: null as string | null,
+  /** Instagram reel — first transmission */
+  url: "https://www.instagram.com/reel/DcOsXiWN6Ex/",
   runtime: "CLASSIFIED",
 };
 
@@ -152,6 +155,14 @@ export const bulletins: Bulletin[] = [
   {
     id: "b-002",
     code: "BULLETIN 002",
+    date: "2026",
+    title: "FILE 001 DECLASSIFIED: XKEONTE",
+    body: "The first name is out. XKeonte — British creator from Birmingham — is confirmed inside, and he is the head of this organisation. He is still an inmate. Transmission 001 is live.",
+    status: "VERIFIED",
+  },
+  {
+    id: "b-003",
+    code: "BULLETIN 003",
     date: "PENDING",
     title: "[REDACTED]",
     body: "[COMING SOON]",

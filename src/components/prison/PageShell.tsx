@@ -9,7 +9,7 @@ export function PageShell({
 }: {
   kicker: string;
   title: string;
-  subtitle?: string;
+  subtitle?: string | undefined;
   children: ReactNode;
 }) {
   return (

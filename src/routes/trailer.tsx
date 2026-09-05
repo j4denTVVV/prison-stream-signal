@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { Play } from "lucide-react";
+import { ExternalLink, Play } from "lucide-react";
 import { PageShell } from "@/components/prison/PageShell";
 import { ClassifiedPanel, DataRow } from "@/components/prison/Classified";
 import { trailer } from "@/config/prison";
@@ -11,18 +11,24 @@ export const Route = createFileRoute("/trailer")({
       { title: "Transmission 001 — PRISON STREAM" },
       {
         name: "description",
-        content:
-          "The official Prison Stream trailer. Transmission pending — no footage has been released yet.",
+        content: "The official Prison Stream trailer. Transmission 001 is live — the first footage from inside the facility.",
       },
       { property: "og:title", content: "Transmission 001 — PRISON STREAM" },
-      { property: "og:description", content: "Transmission pending." },
+      { property: "og:description", content: "The first transmission is live." },
     ],
   }),
   component: TrailerPage,
 });
 
+/** Convert an Instagram reel/post URL into its embed URL. */
+function toEmbed(url: string): string | null {
+  const m = url.match(/instagram\.com\/(reel|p|reels)\/([\w-]+)/);
+  return m ? `https://www.instagram.com/${m[1]}/${m[2]}/embed` : null;
+}
+
 function TrailerPage() {
   const [playing, setPlaying] = useState(false);
+  const embedUrl = trailer.url ? toEmbed(trailer.url) : null;
 
   return (
     <PageShell
@@ -31,21 +37,22 @@ function TrailerPage() {
       subtitle="A single feed, routed through the facility's monitoring system."
     >
       <div className="panel corner-marks grain vignette relative aspect-video overflow-hidden">
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-24 animate-scan bg-gradient-to-b from-transparent via-foreground/[0.06] to-transparent" />
-        <div className="absolute top-3 left-4 flex items-center gap-2 font-mono text-[10px] tracking-[0.24em] text-muted-foreground uppercase">
+        <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-24 animate-scan bg-gradient-to-b from-transparent via-foreground/[0.06] to-transparent" />
+        <div className="absolute top-3 left-4 z-20 flex items-center gap-2 font-mono text-[10px] tracking-[0.24em] text-muted-foreground uppercase">
           <span className="h-1.5 w-1.5 rounded-full bg-signal" /> REC
         </div>
-        <div className="absolute top-3 right-4 font-mono text-[10px] tracking-[0.24em] text-muted-foreground uppercase">
+        <div className="absolute top-3 right-4 z-20 font-mono text-[10px] tracking-[0.24em] text-muted-foreground uppercase">
           CAM 001 — MAIN GATE
         </div>
 
         {trailer.released && trailer.url ? (
-          playing ? (
-            <video
-              src={trailer.url}
-              controls
-              autoPlay
-              className="h-full w-full object-cover"
+          playing && embedUrl ? (
+            <iframe
+              src={embedUrl}
+              title="Prison Stream — Transmission 001"
+              className="h-full w-full border-0"
+              allow="autoplay; encrypted-media; picture-in-picture"
+              allowFullScreen
             />
           ) : (
             <button
@@ -68,8 +75,19 @@ function TrailerPage() {
             <span className="label-mono">No footage cleared for release</span>
           </div>
         )}
-        <div className="pointer-events-none absolute inset-0 bg-[repeating-linear-gradient(0deg,rgba(0,0,0,0.28)_0px,rgba(0,0,0,0.28)_1px,transparent_1px,transparent_4px)] opacity-70" />
+        <div className="pointer-events-none absolute inset-0 z-10 bg-[repeating-linear-gradient(0deg,rgba(0,0,0,0.28)_0px,rgba(0,0,0,0.28)_1px,transparent_1px,transparent_4px)] opacity-70" />
       </div>
+
+      {trailer.released && trailer.url ? (
+        <a
+          href={trailer.url}
+          target="_blank"
+          rel="noreferrer"
+          className="mt-4 inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.24em] text-rust uppercase hover:text-foreground"
+        >
+          Watch on Instagram <ExternalLink className="h-3.5 w-3.5" />
+        </a>
+      ) : null}
 
       <div className="mt-8 max-w-lg">
         <ClassifiedPanel title="Media record">
@@ -80,7 +98,7 @@ function TrailerPage() {
             tone={trailer.released ? "ok" : "warn"}
           />
           <DataRow label="Runtime" value={trailer.runtime} tone="muted" />
-          <DataRow label="Release date" value="CLASSIFIED" tone="muted" />
+          <DataRow label="Subject" value="FILE 001 — XKEONTE" tone="ok" />
         </ClassifiedPanel>
       </div>
     </PageShell>

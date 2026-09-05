@@ -11,6 +11,7 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { Toaster } from "sonner";
 import { Atmosphere } from "@/components/prison/Atmosphere";
 import { SiteHeader } from "@/components/prison/SiteHeader";
 import { SiteFooter } from "@/components/prison/SiteFooter";
@@ -137,6 +138,7 @@ function RootComponent() {
         <Outlet />
       </main>
       <SiteFooter />
+      <Toaster theme="dark" position="bottom-right" />
     </QueryClientProvider>
   );
 }
