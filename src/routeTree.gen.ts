@@ -10,33 +10,53 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as RosterIndexRouteImport } from './routes/roster.index'
+import { Route as RosterFileIdRouteImport } from './routes/roster.$fileId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RosterIndexRoute = RosterIndexRouteImport.update({
+  id: '/roster/',
+  path: '/roster/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RosterFileIdRoute = RosterFileIdRouteImport.update({
+  id: '/roster/$fileId',
+  path: '/roster/$fileId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/roster/$fileId': typeof RosterFileIdRoute
+  '/roster/': typeof RosterIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/roster/$fileId': typeof RosterFileIdRoute
+  '/roster': typeof RosterIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/roster/$fileId': typeof RosterFileIdRoute
+  '/roster/': typeof RosterIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/roster/$fileId' | '/roster/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/roster/$fileId' | '/roster'
+  id: '__root__' | '/' | '/roster/$fileId' | '/roster/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  RosterFileIdRoute: typeof RosterFileIdRoute
+  RosterIndexRoute: typeof RosterIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +68,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/roster/': {
+      id: '/roster/'
+      path: '/roster'
+      fullPath: '/roster/'
+      preLoaderRoute: typeof RosterIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/roster/$fileId': {
+      id: '/roster/$fileId'
+      path: '/roster/$fileId'
+      fullPath: '/roster/$fileId'
+      preLoaderRoute: typeof RosterFileIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  RosterFileIdRoute: RosterFileIdRoute,
+  RosterIndexRoute: RosterIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
