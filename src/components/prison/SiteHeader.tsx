@@ -3,16 +3,18 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { SoundToggle } from "./SoundToggle";
 import { StatusDot } from "./Classified";
+import logoAsset from "@/assets/ps-logo.png.asset.json";
 
 export const navLinks = [
   { to: "/", label: "Home" },
-  { to: "/roster", label: "Roster" },
+  { to: "/roster", label: "Who's Inside?" },
+  { to: "/about", label: "About" },
+  { to: "/trailer", label: "Watch" },
+  { to: "/connect", label: "Socials" },
   { to: "/live", label: "Live" },
   { to: "/reveals", label: "Reveals" },
-  { to: "/trailer", label: "Trailer" },
   { to: "/bulletin", label: "Bulletin" },
   { to: "/vote", label: "Vote" },
-  { to: "/about", label: "About" },
 ] as const;
 
 export function SiteHeader() {
@@ -23,13 +25,16 @@ export function SiteHeader() {
       <div className="hazard-strip h-[3px] w-full opacity-30" />
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
         <Link to="/" className="group flex items-center gap-3">
-          <span className="hairline flex h-8 w-8 items-center justify-center bg-card font-mono text-[10px] text-rust">
-            PS
-          </span>
+          <img
+            src={logoAsset.url}
+            alt="Prison Stream emblem"
+            className="h-9 w-auto opacity-90 transition-opacity group-hover:opacity-100"
+          />
           <span className="font-display text-sm tracking-[0.35em] text-foreground uppercase">
             Prison Stream
           </span>
         </Link>
+
 
         <nav className="hidden items-center gap-1 lg:flex">
           {navLinks.map((l) => (
