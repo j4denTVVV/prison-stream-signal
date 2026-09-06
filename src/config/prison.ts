@@ -69,6 +69,11 @@ export const projectFile = [
  * `placeholderFiles` only controls how many empty files are displayed and
  * does NOT imply a participant count.
  * ------------------------------------------------------------------- */
+import xkeonteAsset from "@/assets/xkeonte-portrait.jpg.asset.json";
+import sebzAsset from "@/assets/sebzonair.jpg.asset.json";
+import amiriAsset from "@/assets/amirididit.png.asset.json";
+import cloutAsset from "@/assets/mrcloutglasses.jpg.asset.json";
+
 export type SocialLink = { platform: string; url: string };
 
 export type RosterEntry = {
@@ -95,13 +100,62 @@ export const roster: RosterEntry[] = [
     file: "001",
     revealed: true,
     name: "XKEONTE",
-    platform: "INSTAGRAM",
-    role: "HEAD OF THE ORGANISATION — STILL AN INMATE",
-    bio: "British content creator and online personality from Birmingham, England. Known for entertaining, creator-led content and his involvement in the UK online creator scene. He runs this organisation — from the inside.",
+    platform: "TWITCH",
+    role: "INMATE",
+    image: xkeonteAsset.url,
+    bio: "British content creator and online personality from Birmingham, England. Known for entertaining, creator-led content and his involvement in the UK online creator scene.",
     socials: [
+      { platform: "Twitch", url: "https://www.twitch.tv/xkeonte" },
+      { platform: "Discord", url: "https://discord.com/invite/MddrwwJpf5" },
       { platform: "Instagram", url: "https://www.instagram.com/reel/DcOsXiWN6Ex/" },
     ],
-    announcedOn: "2026",
+    status: "CONFIRMED — INSIDE",
+  },
+  {
+    file: "002",
+    revealed: true,
+    name: "SEBZONAIR",
+    platform: "TWITCH",
+    role: "INMATE",
+    image: sebzAsset.url,
+    bio: "SebzOnAir is a British content creator and streamer known for his entertaining personality, livestreams and engaging online presence. His content centres around entertainment, interactions with his audience and creating memorable moments for his community. With a personality-driven approach to content, SebzOnAir has developed his own identity online through livestreaming, social media and collaborations with other creators.",
+    socials: [
+      { platform: "Twitch", url: "https://www.twitch.tv/sebzonair" },
+      { platform: "YouTube", url: "https://www.youtube.com/@SebzOnAir" },
+      { platform: "TikTok", url: "https://www.tiktok.com/@sebzonairlive" },
+      { platform: "Instagram", url: "https://www.instagram.com/sebzonair/" },
+    ],
+    status: "CONFIRMED — INSIDE",
+  },
+  {
+    file: "003",
+    revealed: true,
+    name: "AMIRIDIDIT",
+    platform: "TWITCH",
+    role: "INMATE",
+    image: amiriAsset.url,
+    bio: "AmirIDidIt, also known as 4DidIt, is a British content creator and online personality known for his entertaining personality, social media presence and creator-focused content. He has developed his own identity online through engaging with his audience, collaborating with other creators and sharing entertaining moments across social platforms.",
+    socials: [
+      { platform: "Instagram", url: "https://www.instagram.com/amirididit/" },
+      { platform: "Twitch", url: "https://www.twitch.tv/4didit" },
+      { platform: "TikTok", url: "https://www.tiktok.com/@amiri.didit" },
+      { platform: "YouTube", url: "https://www.youtube.com/channel/UCifKJvSuQBh57QupAWnPjDQ" },
+    ],
+    status: "CONFIRMED — INSIDE",
+  },
+  {
+    file: "004",
+    revealed: true,
+    name: "MRCLOUTGLASSES",
+    platform: "YOUTUBE",
+    role: "INMATE",
+    image: cloutAsset.url,
+    bio: "MrCloutGlasses is a British content creator and online personality known for his distinctive online persona, entertaining content and presence across social media. He has built his identity around personality-driven entertainment, interacting with audiences and creating memorable moments online. Known by the name MrCloutGlasses or Andre, he continues to grow his presence within the online creator scene through social content, collaborations and community engagement.",
+    socials: [
+      { platform: "Instagram", url: "https://www.instagram.com/mrcloutglassess/" },
+      { platform: "YouTube", url: "https://www.youtube.com/c/MrCloutGlasses" },
+      { platform: "TikTok", url: "https://www.tiktok.com/@mrcloutglassess" },
+    ],
     status: "CONFIRMED — INSIDE",
   },
 ];
@@ -156,8 +210,8 @@ export const bulletins: Bulletin[] = [
     id: "b-002",
     code: "BULLETIN 002",
     date: "2026",
-    title: "FILE 001 DECLASSIFIED: XKEONTE",
-    body: "The first name is out. XKeonte — British creator from Birmingham — is confirmed inside, and he is the head of this organisation. He is still an inmate. Transmission 001 is live.",
+    title: "FIRST FILES DECLASSIFIED",
+    body: "The first name is out. XKeonte, SebzOnAir, AmirIDidIt and MrCloutGlasses are confirmed inside. Transmission 001 is live.",
     status: "VERIFIED",
   },
   {
