@@ -73,14 +73,36 @@ import xkeonteAsset from "@/assets/xkeonte-portrait.jpg.asset.json";
 import sebzAsset from "@/assets/sebzonair.jpg.asset.json";
 import amiriAsset from "@/assets/amirididit.png.asset.json";
 import cloutAsset from "@/assets/mrcloutglasses.jpg.asset.json";
+import primeAsset from "@/assets/upload-image-11.png.asset.json";
+import mrwrldAsset from "@/assets/upload-image-2.png.asset.json";
+import samhamAsset from "@/assets/upload-image-3.png.asset.json";
+import angelAsset from "@/assets/upload-image-4.png.asset.json";
+import mr100Asset from "@/assets/upload-image-5.png.asset.json";
+import noisebykjAsset from "@/assets/upload-image-6.png.asset.json";
+import lbmmAsset from "@/assets/upload-image-7.png.asset.json";
+import r3dAsset from "@/assets/upload-image-8.png.asset.json";
+import tyroneAsset from "@/assets/upload-image-9.png.asset.json";
+import kingsleyAsset from "@/assets/upload-image-10.png.asset.json";
 
 export type SocialLink = { platform: string; url: string };
+
+/**
+ * Database clearance for a creator.
+ * CLASSIFIED — in the database, not cleared for release (search returns classified).
+ * CONFIRMED  — cleared: search runs the full scan and unseals the file.
+ * REVEALED   — already unsealed publicly; search still runs the scan.
+ */
+export type Clearance = "CLASSIFIED" | "CONFIRMED" | "REVEALED";
 
 export type RosterEntry = {
   /** file number, e.g. "001" */
   file: string;
   revealed: boolean;
+  /** database clearance — drives the reveals search terminal */
+  clearance?: Clearance;
   name?: string;
+  /** extra spellings the search should recognise */
+  aliases?: string[];
   username?: string;
   platform?: string;
   bio?: string;
@@ -92,6 +114,7 @@ export type RosterEntry = {
   /** position within the organisation, if revealed */
   role?: string;
 };
+
 
 export const placeholderFiles = 6;
 
