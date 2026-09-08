@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { Search, Lock, ShieldCheck, FileWarning } from "lucide-react";
 import { PageShell } from "@/components/prison/PageShell";
-import { clearanceOf, searchCreator } from "@/lib/roster";
+import { clearanceOf, creatorDatabase, searchCreator } from "@/lib/roster";
 import type { RosterEntry } from "@/config/prison";
 
 export const Route = createFileRoute("/reveals")({
@@ -251,15 +251,10 @@ function RevealsPage() {
     setQuery("");
   };
 
-  const guestEntries = guests
-    .map((f) => searchCreator(f) ?? null)
-    .filter(Boolean) as RosterEntry[];
+  const db = creatorDatabase();
   const unsealed = guests
-    .map((file) => {
-      const found = guestEntries.find((g) => g.file === file);
-      return found ?? null;
-    })
-    .filter(Boolean) as RosterEntry[];
+    .map((file) => db.find((c) => c.file === file))
+    .filter((c): c is RosterEntry => Boolean(c));
 
   return (
     <PageShell
