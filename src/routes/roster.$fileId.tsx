@@ -1,8 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft, Lock } from "lucide-react";
+import { useEffect, useState } from "react";
 import { PageShell } from "@/components/prison/PageShell";
 import { ClassifiedPanel, DataRow, Redacted } from "@/components/prison/Classified";
-import { findFile } from "@/lib/roster";
+import { findFile, readUnsealedFiles } from "@/lib/roster";
 import { terms } from "@/config/prison";
 
 export const Route = createFileRoute("/roster/$fileId")({
@@ -25,7 +26,11 @@ export const Route = createFileRoute("/roster/$fileId")({
 
 function FilePage() {
   const { fileId } = Route.useParams();
-  const entry = findFile(fileId);
+  const [unsealed, setUnsealed] = useState<string[]>([]);
+
+  useEffect(() => setUnsealed(readUnsealedFiles()), []);
+
+  const entry = findFile(fileId, unsealed);
 
   return (
     <PageShell
