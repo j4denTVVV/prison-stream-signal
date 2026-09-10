@@ -6,7 +6,6 @@ import { DoorTransition } from "@/components/prison/DoorTransition";
 import { SystemTicker } from "@/components/prison/SystemTicker";
 import { Lockdown } from "@/components/prison/Lockdown";
 import { Reveal } from "@/components/prison/Reveal";
-import { TerminologyTease } from "@/components/prison/TerminologyTease";
 import { FileCard } from "@/components/prison/FileCard";
 import { ClassifiedPanel, DataRow, SectionHeading, StatusDot } from "@/components/prison/Classified";
 import { getRosterFiles } from "@/lib/roster";
@@ -120,7 +119,7 @@ function Index() {
             subtitle="A file exists. Most of it is blacked out. What follows is everything currently cleared for public release."
           />
         </Reveal>
-        <div className="grid gap-8 lg:grid-cols-2">
+        <div className="grid gap-8">
           <Reveal>
             <ClassifiedPanel title="Document 001">
               {projectFile.map((row) => (
@@ -132,9 +131,6 @@ function Index() {
                 />
               ))}
             </ClassifiedPanel>
-          </Reveal>
-          <Reveal delay={120}>
-            <TerminologyTease />
           </Reveal>
         </div>
       </section>

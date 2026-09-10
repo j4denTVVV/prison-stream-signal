@@ -39,14 +39,17 @@ function AboutPage() {
                 {launch.window} {launch.year}
               </span>
               . The exact date has not been announced. The full concept, the format, and the
-              complete list of {terms.people.toLowerCase()} inside have not been revealed.
+              complete list of {terms.people.toLowerCase()} inside have not been revealed. Three files are open;
+              the rest are sealed until someone finds them by name.
             </p>
             <p>
               One name has been declassified:{" "}
               <Link to="/roster/$fileId" params={{ fileId: "001" }} className="text-rust hover:text-foreground">
                 XKEONTE
               </Link>{" "}
-              — the head of this organisation, and still an inmate.
+              — the creator who built and organised the whole thing, and still an inmate. He
+              assembled the project from the inside: the concept, the roster and every door in the
+              facility run through him. He walks in with everyone else.
             </p>
             <p>
               Everything else is behind locked doors. This site updates the moment anything is
@@ -59,7 +62,6 @@ function AboutPage() {
           <ul className="space-y-3 font-mono text-[11px] tracking-[0.18em] uppercase">
             {[
               "The exact launch date",
-              `What the ${terms.people.toLowerCase()} are officially called`,
               "The full roster",
               "The format of the streams",
               "The location of the facility",
