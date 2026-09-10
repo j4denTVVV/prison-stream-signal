@@ -118,6 +118,7 @@ export const roster: RosterEntry[] = [
   {
     file: "001",
     revealed: true,
+    clearance: "REVEALED",
     name: "XKEONTE",
     platform: "TWITCH",
     role: "INMATE",
@@ -133,6 +134,7 @@ export const roster: RosterEntry[] = [
   {
     file: "002",
     revealed: true,
+    clearance: "REVEALED",
     name: "SEBZONAIR",
     platform: "TWITCH",
     role: "INMATE",
@@ -149,6 +151,7 @@ export const roster: RosterEntry[] = [
   {
     file: "003",
     revealed: true,
+    clearance: "REVEALED",
     name: "4DIDIT",
     aliases: ["AMIRIDIDIT", "AMIRI DID IT", "AMIRI"],
     platform: "TWITCH",
@@ -166,6 +169,7 @@ export const roster: RosterEntry[] = [
   {
     file: "005",
     revealed: true,
+    clearance: "CONFIRMED",
     name: "PRIMEDEHANEY",
     role: "INMATE",
     image: primeAsset.url,
@@ -175,6 +179,7 @@ export const roster: RosterEntry[] = [
   {
     file: "006",
     revealed: true,
+    clearance: "CONFIRMED",
     name: "MRWRLD",
     role: "INMATE",
     image: mrwrldAsset.url,
@@ -184,6 +189,7 @@ export const roster: RosterEntry[] = [
   {
     file: "007",
     revealed: true,
+    clearance: "CONFIRMED",
     name: "SAMHAM",
     role: "INMATE",
     image: samhamAsset.url,
@@ -193,6 +199,7 @@ export const roster: RosterEntry[] = [
   {
     file: "008",
     revealed: true,
+    clearance: "CONFIRMED",
     name: "ANGELMURRAY",
     role: "INMATE",
     image: angelAsset.url,
@@ -202,6 +209,7 @@ export const roster: RosterEntry[] = [
   {
     file: "009",
     revealed: true,
+    clearance: "CONFIRMED",
     name: "MR£100",
     aliases: ["MR100", "MR 100"],
     role: "INMATE",
@@ -212,6 +220,7 @@ export const roster: RosterEntry[] = [
   {
     file: "010",
     revealed: true,
+    clearance: "CONFIRMED",
     name: "NOISEBYKJ",
     role: "INMATE",
     image: noisebykjAsset.url,
@@ -221,6 +230,7 @@ export const roster: RosterEntry[] = [
   {
     file: "011",
     revealed: true,
+    clearance: "CONFIRMED",
     name: "LBMM",
     role: "INMATE",
     image: lbmmAsset.url,
@@ -230,6 +240,7 @@ export const roster: RosterEntry[] = [
   {
     file: "012",
     revealed: true,
+    clearance: "CONFIRMED",
     name: "R3DEMPTIONTJ",
     role: "INMATE",
     image: r3dAsset.url,
@@ -239,6 +250,7 @@ export const roster: RosterEntry[] = [
   {
     file: "013",
     revealed: true,
+    clearance: "CONFIRMED",
     name: "TYRONE1MC",
     role: "INMATE",
     image: tyroneAsset.url,
@@ -248,6 +260,7 @@ export const roster: RosterEntry[] = [
   {
     file: "014",
     revealed: true,
+    clearance: "CONFIRMED",
     name: "KINGSLEYCMA",
     role: "INMATE",
     image: kingsleyAsset.url,
