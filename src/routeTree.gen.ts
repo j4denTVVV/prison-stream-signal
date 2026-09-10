@@ -16,7 +16,6 @@ import { Route as ConnectRouteImport } from './routes/connect'
 import { Route as LiveRouteImport } from './routes/live'
 import { Route as RevealsRouteImport } from './routes/reveals'
 import { Route as TrailerRouteImport } from './routes/trailer'
-import { Route as VoteRouteImport } from './routes/vote'
 import { Route as RosterIndexRouteImport } from './routes/roster.index'
 import { Route as RosterFileIdRouteImport } from './routes/roster.$fileId'
 
@@ -55,11 +54,6 @@ const TrailerRoute = TrailerRouteImport.update({
   path: '/trailer',
   getParentRoute: () => rootRouteImport,
 } as any)
-const VoteRoute = VoteRouteImport.update({
-  id: '/vote',
-  path: '/vote',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const RosterIndexRoute = RosterIndexRouteImport.update({
   id: '/roster/',
   path: '/roster/',
@@ -79,7 +73,6 @@ export interface FileRoutesByFullPath {
   '/live': typeof LiveRoute
   '/reveals': typeof RevealsRoute
   '/trailer': typeof TrailerRoute
-  '/vote': typeof VoteRoute
   '/roster/$fileId': typeof RosterFileIdRoute
   '/roster/': typeof RosterIndexRoute
 }
@@ -91,7 +84,6 @@ export interface FileRoutesByTo {
   '/live': typeof LiveRoute
   '/reveals': typeof RevealsRoute
   '/trailer': typeof TrailerRoute
-  '/vote': typeof VoteRoute
   '/roster/$fileId': typeof RosterFileIdRoute
   '/roster': typeof RosterIndexRoute
 }
@@ -104,7 +96,6 @@ export interface FileRoutesById {
   '/live': typeof LiveRoute
   '/reveals': typeof RevealsRoute
   '/trailer': typeof TrailerRoute
-  '/vote': typeof VoteRoute
   '/roster/$fileId': typeof RosterFileIdRoute
   '/roster/': typeof RosterIndexRoute
 }
@@ -118,7 +109,6 @@ export interface FileRouteTypes {
     | '/live'
     | '/reveals'
     | '/trailer'
-    | '/vote'
     | '/roster/$fileId'
     | '/roster/'
   fileRoutesByTo: FileRoutesByTo
@@ -130,7 +120,6 @@ export interface FileRouteTypes {
     | '/live'
     | '/reveals'
     | '/trailer'
-    | '/vote'
     | '/roster/$fileId'
     | '/roster'
   id:
@@ -142,7 +131,6 @@ export interface FileRouteTypes {
     | '/live'
     | '/reveals'
     | '/trailer'
-    | '/vote'
     | '/roster/$fileId'
     | '/roster/'
   fileRoutesById: FileRoutesById
@@ -155,7 +143,6 @@ export interface RootRouteChildren {
   LiveRoute: typeof LiveRoute
   RevealsRoute: typeof RevealsRoute
   TrailerRoute: typeof TrailerRoute
-  VoteRoute: typeof VoteRoute
   RosterFileIdRoute: typeof RosterFileIdRoute
   RosterIndexRoute: typeof RosterIndexRoute
 }
@@ -211,13 +198,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TrailerRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/vote': {
-      id: '/vote'
-      path: '/vote'
-      fullPath: '/vote'
-      preLoaderRoute: typeof VoteRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/roster/': {
       id: '/roster/'
       path: '/roster'
@@ -243,7 +223,6 @@ const rootRouteChildren: RootRouteChildren = {
   LiveRoute: LiveRoute,
   RevealsRoute: RevealsRoute,
   TrailerRoute: TrailerRoute,
-  VoteRoute: VoteRoute,
   RosterFileIdRoute: RosterFileIdRoute,
   RosterIndexRoute: RosterIndexRoute,
 }

@@ -20,9 +20,6 @@ export const terms = {
   group: "The Roster",
   /** what a profile page is called */
   profile: "File",
-  /** teased, unconfirmed options — used by the terminology easter egg */
-  candidates: ["CREATORS?", "GUESTS?", "INMATES?", "PARTICIPANTS?", "RESIDENTS?"],
-  candidatesAnswer: "WE'LL LET YOU KNOW.",
 } as const;
 
 /** ---------------------------------------------------------------------
@@ -72,8 +69,7 @@ export const projectFile = [
 import xkeonteAsset from "@/assets/xkeonte-portrait.jpg.asset.json";
 import sebzAsset from "@/assets/sebzonair.jpg.asset.json";
 import amiriAsset from "@/assets/amirididit.png.asset.json";
-import cloutAsset from "@/assets/mrcloutglasses.jpg.asset.json";
-import primeAsset from "@/assets/upload-image-11.png.asset.json";
+import primeAsset from "@/assets/primedehaney.png.asset.json";
 import mrwrldAsset from "@/assets/upload-image-2.png.asset.json";
 import samhamAsset from "@/assets/upload-image-3.png.asset.json";
 import angelAsset from "@/assets/upload-image-4.png.asset.json";
@@ -153,31 +149,17 @@ export const roster: RosterEntry[] = [
   {
     file: "003",
     revealed: true,
-    name: "AMIRIDIDIT",
+    name: "4DIDIT",
+    aliases: ["AMIRIDIDIT", "AMIRI DID IT", "AMIRI"],
     platform: "TWITCH",
     role: "INMATE",
     image: amiriAsset.url,
-    bio: "AmirIDidIt, also known as 4DidIt, is a British content creator and online personality known for his entertaining personality, social media presence and creator-focused content. He has developed his own identity online through engaging with his audience, collaborating with other creators and sharing entertaining moments across social platforms.",
+    bio: "4DidIt, also known as AmirIDidIt, is a British content creator and online personality known for his entertaining personality, social media presence and creator-focused content. He has developed his own identity online through engaging with his audience, collaborating with other creators and sharing entertaining moments across social platforms.",
     socials: [
       { platform: "Instagram", url: "https://www.instagram.com/amirididit/" },
       { platform: "Twitch", url: "https://www.twitch.tv/4didit" },
       { platform: "TikTok", url: "https://www.tiktok.com/@amiri.didit" },
       { platform: "YouTube", url: "https://www.youtube.com/channel/UCifKJvSuQBh57QupAWnPjDQ" },
-    ],
-    status: "CONFIRMED — INSIDE",
-  },
-  {
-    file: "004",
-    revealed: true,
-    name: "MRCLOUTGLASSES",
-    platform: "YOUTUBE",
-    role: "INMATE",
-    image: cloutAsset.url,
-    bio: "MrCloutGlasses is a British content creator and online personality known for his distinctive online persona, entertaining content and presence across social media. He has built his identity around personality-driven entertainment, interacting with audiences and creating memorable moments online. Known by the name MrCloutGlasses or Andre, he continues to grow his presence within the online creator scene through social content, collaborations and community engagement.",
-    socials: [
-      { platform: "Instagram", url: "https://www.instagram.com/mrcloutglassess/" },
-      { platform: "YouTube", url: "https://www.youtube.com/c/MrCloutGlasses" },
-      { platform: "TikTok", url: "https://www.tiktok.com/@mrcloutglassess" },
     ],
     status: "CONFIRMED — INSIDE",
   },
@@ -326,7 +308,7 @@ export const bulletins: Bulletin[] = [
     code: "BULLETIN 002",
     date: "2026",
     title: "FIRST FILES DECLASSIFIED",
-    body: "The first name is out. XKeonte, SebzOnAir, AmirIDidIt and MrCloutGlasses are confirmed inside. Transmission 001 is live.",
+    body: "The first names are out. XKeonte, SebzOnAir and 4DidIt are confirmed inside. Transmission 001 is live. Every other file remains sealed until searched.",
     status: "VERIFIED",
   },
   {
@@ -339,31 +321,6 @@ export const bulletins: Bulletin[] = [
   },
 ];
 
-/** ---------------------------------------------------------------------
- * THE VOTE — flexible poll system. Add polls when there is something to ask.
- * ------------------------------------------------------------------- */
-export type Poll = {
-  id: string;
-  question: string;
-  options: { id: string; label: string }[];
-  closes: string;
-  status: "OPEN" | "CLOSED" | "PENDING";
-};
-
-export const polls: Poll[] = [
-  {
-    id: "p-001",
-    question: "WHAT SHOULD THE PEOPLE INSIDE BE CALLED?",
-    options: [
-      { id: "o1", label: "CREATORS" },
-      { id: "o2", label: "PARTICIPANTS" },
-      { id: "o3", label: "INMATES" },
-      { id: "o4", label: "WE SHOULDN'T KNOW YET" },
-    ],
-    closes: "CLOSING TIME: CLASSIFIED",
-    status: "OPEN",
-  },
-];
 
 /** ---------------------------------------------------------------------
  * WHAT'S NEXT — nothing cleared for release yet.
