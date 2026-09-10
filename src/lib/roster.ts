@@ -34,8 +34,13 @@ export function getRosterFiles(unsealed: string[] = []): RosterEntry[] {
   return [...revealed, ...placeholders];
 }
 
-export function findFile(fileId: string): RosterEntry {
-  return getRosterFiles().find((f) => f.file === fileId) ?? { file: fileId, revealed: false };
+export function findFile(fileId: string, unsealed: string[] = []): RosterEntry {
+  const entry = roster.find((r) => r.file === fileId);
+  if (!entry) return { file: fileId, revealed: false };
+
+  const isPublic = clearanceOf(entry) === "REVEALED";
+  const isPersonallyUnsealed = unsealed.includes(entry.file);
+  return isPublic || isPersonallyUnsealed ? entry : { file: entry.file, revealed: false };
 }
 
 /** Normalise a name for search: case-insensitive, ignores spaces/symbols. */
