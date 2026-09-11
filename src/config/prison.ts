@@ -72,12 +72,12 @@ import amiriAsset from "@/assets/amirididit.png.asset.json";
 import primeAsset from "@/assets/primedehaney.png.asset.json";
 import mrwrldAsset from "@/assets/upload-image-2.png.asset.json";
 import samhamAsset from "@/assets/upload-image-3.png.asset.json";
-import angelAsset from "@/assets/upload-image-4.png.asset.json";
+import angelAsset from "@/assets/angelmurray.jpg.asset.json";
 import mr100Asset from "@/assets/upload-image-5.png.asset.json";
 import noisebykjAsset from "@/assets/upload-image-6.png.asset.json";
-import lbmmAsset from "@/assets/upload-image-7.png.asset.json";
+import lbmmAsset from "@/assets/lbmm.jpg.asset.json";
 import r3dAsset from "@/assets/upload-image-8.png.asset.json";
-import tyroneAsset from "@/assets/upload-image-9.png.asset.json";
+import tyroneAsset from "@/assets/tyrone1mc.jpg.asset.json";
 import kingsleyAsset from "@/assets/upload-image-10.png.asset.json";
 
 export type SocialLink = { platform: string; url: string };
