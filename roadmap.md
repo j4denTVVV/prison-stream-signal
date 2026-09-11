@@ -6,4 +6,4 @@
 - [x] Only XKeonte, SebzOnAir and 4DidIt public; everyone else appears on the roster once searched
 - [x] Remove the Vote page and the "what should we call them" teaser
 - [x] About page: XKeonte organised the whole thing, still an inmate
-- [ ] Social links for every creator — blocked: usernames not supplied for the 10 searchable creators
+- [ ] Verify every creator social link; replace guessed handles only with confirmed profiles
