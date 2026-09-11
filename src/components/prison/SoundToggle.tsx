@@ -52,7 +52,7 @@ export function SoundToggle() {
 
     osc.start();
     noise.start();
-    master.gain.linearRampToValueAtTime(0.06, ctx.currentTime + 1.2);
+    master.gain.linearRampToValueAtTime(0.16, ctx.currentTime + 1.2);
 
     stopRef.current = () => {
       master.gain.linearRampToValueAtTime(0, ctx.currentTime + 0.4);
