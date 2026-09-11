@@ -136,6 +136,7 @@ export const roster: RosterEntry[] = [
     revealed: true,
     clearance: "REVEALED",
     name: "SEBZONAIR",
+    aliases: ["SEBZ", "SEBZ ON AIR", "SEBZONAIRLIVE"],
     platform: "TWITCH",
     role: "INMATE",
     image: sebzAsset.url,
